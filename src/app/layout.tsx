@@ -27,12 +27,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-primary text-primary-foreground p-4">
-          <div className="max-w-screen-2xl">
-            IndieHackerJP
+        <header className="bg-primary text-primary-foreground py-4">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="font-semibold">
+              IndieHackerJP
+            </div>
           </div>
         </header>
-        <main>
+        <main className="max-w-7xl mx-auto px-4 py-6">
           {children}
         </main>
       </body>
