@@ -22,7 +22,7 @@ export default function Home() {
       </div>
       <div>
         <div className="text-xl font-semibold">My Products</div>
-        <div className="mt-2 border p-4 rounded-lg grid md:grid-cols-2 gap-2 md:gap-x-6">
+        <div className="mt-2 border p-4 rounded-lg grid md:grid-cols-2 gap-y-4 md:gap-x-6">
           <a href="https://liftysaas.com" rel="noopener" target="_blank">
             <Card>
               <CardHeader className="flex-row gap-x-4 items-center">
