@@ -18,7 +18,7 @@ export default function Home() {
             </Button>
           </a>
         </div>
-        <p className="text-muted-foreground mt-4">Sharing thing I learned, enjoyed and earned. Happy hacking!</p>
+        <p className="text-muted-foreground mt-4">Sharing things I learned, and documenting my journey as an indie hacker.</p>
       </div>
       <div>
         <div className="text-xl font-semibold">My Products</div>

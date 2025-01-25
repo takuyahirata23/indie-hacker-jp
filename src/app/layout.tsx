@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Indie Hacker JP",
   description: "Homepage",
+  icons: [{ rel: "icon", url: "/favicon-32x32.png" }, { rel: "apple-touch-icon", url: "/apple-touch-icon.png" }]
 };
 
 export default function RootLayout({
