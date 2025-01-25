@@ -13,9 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Indie Hacker JP",
-  description: "Homepage",
-  icons: [{ rel: "icon", url: "/favicon-32x32.png" }, { rel: "apple-touch-icon", url: "/apple-touch-icon.png" }]
+  title: "IndieHackerJP",
+  description: "Documenting my journey as an indie hacker, and sharing things I learned via this journey",
+  icons: [{ rel: "icon", url: "/favicon-32x32.png" }, { rel: "apple-touch-icon", url: "/apple-touch-icon.png" }],
+  authors: [{ name: "IndieHackerJP" }],
+  robots: "index, follow",
+  keywords: ["indie hacker", "startups", "productivity", "saas"],
+  openGraph: {
+    type: "article"
+  }
 };
 
 export default function RootLayout({
