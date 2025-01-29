@@ -1,10 +1,15 @@
 import Image from 'next/image'
 
+import { getAllPosts, extractPostsEntries } from '@/lib/contentful'
+
 import { Twitter } from 'lucide-react'
 import { Card, CardTitle, CardHeader, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
-export default function Home() {
+export default async function Home() {
+  const res = await getAllPosts()
+  const entries = extractPostsEntries(res)
+  console.log(entries)
   return (
     <div className="font-[family-name:var(--font-geist-sans)] space-y-6">
       <div>
