@@ -6,7 +6,7 @@ const POST_GRAPHQL_FIELDS = `
   slug
 `;
 
-async function fetchGraphQL(query, preview = false) {
+async function fetchGraphQL(query: string, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -50,7 +50,7 @@ export async function getAllPosts(
 }
 
 export async function getArticle(
-  slug,
+  slug: any,
   isDraftMode = false
 ) {
   const article = await fetchGraphQL(

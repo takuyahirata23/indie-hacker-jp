@@ -6,10 +6,16 @@ import { Twitter } from 'lucide-react'
 import { Card, CardTitle, CardHeader, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
+type PostEntry = {
+  title: string
+  slug: string
+}
+
 export default async function Home() {
   const res = await getAllPosts()
   const entries = extractPostsEntries(res)
   console.log(entries)
+
   return (
     <div className="font-[family-name:var(--font-geist-sans)] space-y-6">
       <div>
@@ -25,6 +31,13 @@ export default async function Home() {
         </div>
         <p className="text-muted-foreground mt-4">Sharing things I learned, and documenting my journey as an indie hacker.</p>
       </div>
+      <ul>
+        {entries.map(({ title }: PostEntry, i: number) => (
+          <li key={i}>
+            <div>{title}</div>
+          </li>
+        ))}
+      </ul>
       <div>
         <div className="text-xl font-semibold">My Products</div>
         <div className="mt-2 border p-4 rounded-lg grid md:grid-cols-2 gap-y-4 md:gap-x-6">
