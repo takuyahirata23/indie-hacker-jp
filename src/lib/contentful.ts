@@ -39,30 +39,39 @@ export async function getAllPosts(
     `query {
       postCollection {
         items {
-          title
+          id
           slug
+          metadata {
+            title
+            description
+            cardImage {
+              url
+              width
+              height
+            }
+          }
         }
-  }
+      }
     }`,
     isDraftMode
   );
   return posts;
 }
 
-export async function getArticle(
-  slug: any,
-  isDraftMode = false
-) {
-  const article = await fetchGraphQL(
-    `query {
-        knowledgeArticleCollection(where:{slug: "${slug}"}, limit: 1, preview: ${isDraftMode ? "true" : "false"
-    }) {
-          items {
-            ${POST_GRAPHQL_FIELDS}
-          }
-        }
-      }`,
-    isDraftMode
-  );
-  return extractArticleEntries(article)[0];
-}
+// export async function getArticle(
+//   slug: any,
+//   isDraftMode = false
+// ) {
+//   const article = await fetchGraphQL(
+//     `query {
+//         knowledgeArticleCollection(where:{slug: "${slug}"}, limit: 1, preview: ${isDraftMode ? "true" : "false"
+//     }) {
+//           items {
+//             ${POST_GRAPHQL_FIELDS}
+//           }
+//         }
+//       }`,
+//     isDraftMode
+//   );
+//   return extractArticleEntries(article)[0];
+// }

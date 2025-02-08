@@ -9,12 +9,20 @@ import { Button } from '@/components/ui/button'
 type PostEntry = {
   title: string
   slug: string
+  metadata: {
+    titie: string,
+    description: string,
+    cardImage: {
+      url: string
+      width: number
+      height: number
+    }
+  }
 }
 
 export default async function Home() {
-  const res = await getAllPosts()
+  const res = await getAllPosts(true)
   const entries = extractPostsEntries(res)
-  console.log(entries)
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] space-y-6">
@@ -31,10 +39,16 @@ export default async function Home() {
         </div>
         <p className="text-muted-foreground mt-4">Sharing things I learned, and documenting my journey as an indie hacker.</p>
       </div>
-      <ul>
-        {entries.map(({ title }: PostEntry, i: number) => (
+      <ul className="grid sm:grid-cols-2 gap-4">
+        {entries.map(({ metadata: { title, description, cardImage } }: PostEntry, i: number) => (
           <li key={i}>
-            <div>{title}</div>
+            <Card className="overflow-hidden">
+              <Image src={cardImage.url} width={cardImage.width} height={cardImage.height} alt="LiftySaaS icon" className="w-full h-full" />
+              <CardHeader>
+                <CardTitle>{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
+              </CardHeader>
+            </Card>
           </li>
         ))}
       </ul>
