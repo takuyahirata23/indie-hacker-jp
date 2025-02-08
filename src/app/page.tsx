@@ -18,6 +18,7 @@ type PostEntry = {
       url: string
       width: number
       height: number
+      title: string
     }
   }
 }
@@ -46,7 +47,7 @@ export default async function Home() {
           <li key={i}>
             <Link href={`/posts/${slug}`}>
               <Card className="overflow-hidden">
-                <Image src={cardImage.url} width={cardImage.width} height={cardImage.height} alt="LiftySaaS icon" className="w-full h-full" />
+                <Image src={cardImage.url} priority width={cardImage.width} height={cardImage.height} alt={cardImage.title} className="w-full h-full" />
                 <CardHeader>
                   <CardTitle>{title}</CardTitle>
                   <CardDescription>{description}</CardDescription>

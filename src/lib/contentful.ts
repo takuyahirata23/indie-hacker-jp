@@ -7,13 +7,29 @@ export const client = contentful.createClient({
 })
 
 const POST_GRAPHQL_FIELDS = `
-  _id
+_id
+title
+publishDate
+body {
+  json
+}
+metadata {
   title
-  publishDate
-  body {
-    json
+  description
+  cardImage {
+    url
+    width
+    height
+    title
   }
-  slug
+  twitterOgImage {
+    url
+    width
+    height
+    title
+  }
+}
+slug
 `;
 
 async function fetchGraphQL(query: string, preview = false) {
@@ -58,6 +74,7 @@ export async function getAllPosts(
               url
               width
               height
+              title
             }
           }
         }

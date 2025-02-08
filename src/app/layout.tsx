@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -36,9 +37,9 @@ export default function RootLayout({
       >
         <header className="bg-primary text-primary-foreground py-4">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="font-semibold">
+            <Link href="/" className="font-semibold">
               IndieHackerJP
-            </div>
+            </Link>
           </div>
         </header>
         <main className="max-w-7xl mx-auto px-4 py-6 md:py-8">
