@@ -22,7 +22,7 @@ export function RichText({ richTextContent }: { richTextContent: Document }) {
           const imageUrl = file?.url;  // Use optional chaining for file.url
 
           return imageUrl ? ( // Conditional rendering to prevent errors if image is missing
-            <div className="my-1"><Image src={`https:${imageUrl}`} alt={title || description || ''} width={500} height={500} className="w-auto h-auto mx-auto" /></div>
+            <div className="my-1 md:my-2"><Image src={`https:${imageUrl}`} alt={title || description || ''} width={500} height={500} className="w-auto h-auto mx-auto" /></div>
           ) : null;
         }
 
@@ -30,7 +30,7 @@ export function RichText({ richTextContent }: { richTextContent: Document }) {
       },
       [INLINES.HYPERLINK]: (node, children) => {
         const uri = node.data.uri; // Access uri property
-        return <a href={uri} target="_blank" rel="noopener noreferrer">{children}</a>;
+        return <a href={uri} target="_blank" rel="noopener noreferrer" className="underline text-muted-foreground">{children}</a>;
       },
     },
   };
