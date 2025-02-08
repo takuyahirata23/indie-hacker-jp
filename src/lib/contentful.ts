@@ -1,8 +1,11 @@
+//@ts-nocheck
 const POST_GRAPHQL_FIELDS = `
-  sys {
-    id
-  }
+  _id
   title
+  publishDate
+  body {
+    json
+  }
   slug
 `;
 
@@ -28,7 +31,7 @@ async function fetchGraphQL(query: string, preview = false) {
   ).then((response) => response.json());
 }
 
-export function extractPostsEntries(fetchResponse: any) {
+export function extractPostsEntries(fetchResponse) {
   return fetchResponse?.data?.postCollection?.items;
 }
 
@@ -39,7 +42,7 @@ export async function getAllPosts(
     `query {
       postCollection {
         items {
-          id
+          _id
           slug
           metadata {
             title
@@ -58,20 +61,20 @@ export async function getAllPosts(
   return posts;
 }
 
-// export async function getArticle(
-//   slug: any,
-//   isDraftMode = false
-// ) {
-//   const article = await fetchGraphQL(
-//     `query {
-//         knowledgeArticleCollection(where:{slug: "${slug}"}, limit: 1, preview: ${isDraftMode ? "true" : "false"
-//     }) {
-//           items {
-//             ${POST_GRAPHQL_FIELDS}
-//           }
-//         }
-//       }`,
-//     isDraftMode
-//   );
-//   return extractArticleEntries(article)[0];
-// }
+export async function getPost(
+  slug: string,
+  isDraftMode = false
+) {
+  const posts = await fetchGraphQL(
+    `query {
+        postCollection(where:{slug: "${slug}"}, limit: 1, preview: ${isDraftMode ? "true" : "false"
+    }) {
+          items {
+            ${POST_GRAPHQL_FIELDS}
+          }
+        }
+      }`,
+    isDraftMode
+  );
+  return extractPostsEntries(posts)[0];
+}

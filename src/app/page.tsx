@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { getAllPosts, extractPostsEntries } from '@/lib/contentful'
 
@@ -10,8 +11,9 @@ type PostEntry = {
   title: string
   slug: string
   metadata: {
-    titie: string,
-    description: string,
+    title: string
+    description: string
+    slug: string
     cardImage: {
       url: string
       width: number
@@ -40,15 +42,17 @@ export default async function Home() {
         <p className="text-muted-foreground mt-4">Sharing things I learned, and documenting my journey as an indie hacker.</p>
       </div>
       <ul className="grid sm:grid-cols-2 gap-4">
-        {entries.map(({ metadata: { title, description, cardImage } }: PostEntry, i: number) => (
+        {entries.map(({ slug, metadata: { title, description, cardImage } }: PostEntry, i: number) => (
           <li key={i}>
-            <Card className="overflow-hidden">
-              <Image src={cardImage.url} width={cardImage.width} height={cardImage.height} alt="LiftySaaS icon" className="w-full h-full" />
-              <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription>{description}</CardDescription>
-              </CardHeader>
-            </Card>
+            <Link href={`/posts/${slug}`}>
+              <Card className="overflow-hidden">
+                <Image src={cardImage.url} width={cardImage.width} height={cardImage.height} alt="LiftySaaS icon" className="w-full h-full" />
+                <CardHeader>
+                  <CardTitle>{title}</CardTitle>
+                  <CardDescription>{description}</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
           </li>
         ))}
       </ul>
