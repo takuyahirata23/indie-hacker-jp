@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   keywords: ["indie hacker", "startups", "productivity", "saas"],
   openGraph: {
     type: "article"
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "IndieHackerJP"
   }
 };
 
