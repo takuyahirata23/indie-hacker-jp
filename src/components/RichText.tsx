@@ -11,8 +11,8 @@ export function RichText({ richTextContent }: { richTextContent: Document }) {
       [BLOCKS.HEADING_1]: (_node, children) => <h1 className="font-semibold py-2 md:py-4 md:text-lg">{children}</h1>,
       [BLOCKS.HEADING_2]: (_node, children) => <h2 className="font-semibold py-2 md:py-4 md:text-lg">{children}</h2>,
       [BLOCKS.HEADING_3]: (_node, children) => <h3 className="font-semibold py-1 md:py-2 md:text-lg">{children}</h3>,
-      [BLOCKS.OL_LIST]: (_node, children) => <ol className="ml-2 mb-2">{children}</ol>,
-      [BLOCKS.UL_LIST]: (_node, children) => <ul className="ml-2 mb-2">{children}</ul>,
+      [BLOCKS.OL_LIST]: (_node, children) => <ol className="ml-4 mb-2">{children}</ol>,
+      [BLOCKS.UL_LIST]: (_node, children) => <ul className="ml-4 mb-2 list-disc space-y-2">{children}</ul>,
       [BLOCKS.LIST_ITEM]: (_node, children) => <li className="[&>p]:m-0">{children}</li>,
       [BLOCKS.EMBEDDED_ASSET]: async (node) => {
         const { fields } = await client.getAsset(node.data.target.sys.id)
