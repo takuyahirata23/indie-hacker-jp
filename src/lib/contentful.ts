@@ -1,9 +1,8 @@
-//@ts-nocheck
 import * as contentful from 'contentful'
 
 export const client = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  space: process.env.CONTENTFUL_SPACE_ID!,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 })
 
 const POST_GRAPHQL_FIELDS = `
@@ -54,7 +53,7 @@ async function fetchGraphQL(query: string, preview = false) {
   ).then((response) => response.json());
 }
 
-export function extractPostsEntries(fetchResponse) {
+export function extractPostsEntries(fetchResponse: any) {
   return fetchResponse?.data?.postCollection?.items;
 }
 
