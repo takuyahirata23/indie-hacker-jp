@@ -53,7 +53,7 @@ async function fetchGraphQL(query: string, preview = false) {
   ).then((response) => response.json());
 }
 
-export function extractPostsEntries(fetchResponse: any) {
+export function extractPostsEntries(fetchResponse) {
   return fetchResponse?.data?.postCollection?.items;
 }
 
