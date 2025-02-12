@@ -50,8 +50,8 @@ export default function RootLayout({
         <main className="max-w-7xl mx-auto px-4 py-6 md:py-8">
           {children}
         </main>
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
