@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import Link from 'next/link'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -50,6 +51,7 @@ export default function RootLayout({
           {children}
         </main>
       </body>
+      <Analytics />
     </html>
   );
 }
